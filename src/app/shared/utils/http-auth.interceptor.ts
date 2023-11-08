@@ -1,5 +1,5 @@
 import { LocalStorageUtils } from './local-storage.utils';
-import { LocalStorageKeys } from '../../config/local-storage.config';
+import { LocalStorageKeys } from '../../../config/local-storage.config';
 
 const { fetch: originalFetch } = window;
 window.fetch = async (...args) => {

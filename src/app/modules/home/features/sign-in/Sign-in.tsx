@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { SignInProps } from './models/sign-in.props';
 import { LocalStorageUtils } from '../../../../shared/utils/local-storage.utils';
-import { LocalStorageKeys } from '../../../../config/local-storage.config';
+import { LocalStorageKeys } from '../../../../../config/local-storage.config';
 import { SignInResponse } from '@auto-repair/front';
 
 export function SignIn({ authProvider }: SignInProps) {

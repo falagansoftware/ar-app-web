@@ -6,7 +6,7 @@ import store from './app/store/store';
 // import { firebaseConfig } from './app/config/firebase.config';
 // import { getAnalytics } from 'firebase/analytics';
 // import { initializeApp } from 'firebase/app';
-import './app/config/translations.config';
+import './config/translations.config';
 import { TabsProvider } from './app/shared/components/tabs-system/context/tabs-system-context';
 import ErrorBoundary from './app/shared/utils/error-boundary';
 import { SlotsProvider } from './app/shared/components/slots-system/context/slots-system-context';

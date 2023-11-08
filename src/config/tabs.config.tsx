@@ -1,5 +1,5 @@
-import { TabsSystemConfig } from '../shared/components/tabs-system/models/tabs-system.models';
-import { Dashboard } from '../modules/dashboard/Dashboard';
+import { TabsSystemConfig } from '../app/shared/components/tabs-system/models/tabs-system.models';
+import { Dashboard } from '../app/modules/dashboard/Dashboard';
 
 export const TABS_CONFIG: TabsSystemConfig = {
   tabContainerId: 'main-tabs',

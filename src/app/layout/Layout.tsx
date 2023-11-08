@@ -11,7 +11,7 @@ import { useLayoutDispatch, useLayoutSelector } from '../store/hooks';
 import { useTranslation } from 'react-i18next';
 import { useTab } from '../shared/components/tabs-system/context/tabs-system-context';
 import { TabsSystemActions } from '../shared/components/tabs-system/models/tabs-system.models';
-import { TABS_CONFIG } from '../config/tabs.config';
+import { TABS_CONFIG } from '../../config/tabs.config';
 
 export function Layout() {
   const sideMenuOpen = useLayoutSelector((state) => state.layout.sideMenuOpen);

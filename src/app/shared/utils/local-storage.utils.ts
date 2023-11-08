@@ -1,4 +1,4 @@
-import { LocalStorageKeys } from '../../config/local-storage.config';
+import { LocalStorageKeys } from '../../../config/local-storage.config';
 
 const setItem = (key: LocalStorageKeys, value: any) => {
   window.localStorage.setItem(key, JSON.stringify(value));

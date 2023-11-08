@@ -1,21 +1,26 @@
-import { AuthProvider, SignInData, SignInResponse, SignUpData, SignUpResponse } from '@auto-repair/front';
+import { AuthProvider, SignInData, SignInResponse, SignUpData, SignUpResponse } from "../../../providers";
 
-export const autoRepairApiAuthRepository: AuthProvider = {
-  signIn: async (signInData: SignInData): Promise<SignInResponse> => {
-    const response = await fetch(`http://localhost:3001/auto-repair-api/auth/sign-in`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(signInData),
-    });
-    return response.json();
-  },
+export const autoRepairApiAuthRepository = (): AuthProvider => {
+  const apiBaseUrl = import.meta.env.VITE_AR_API_BASE_URL;
 
-  signUp: async (signUpData: SignUpData): Promise<SignUpResponse> => {
-    const response = await fetch(`http://localhost:3001/auto-repair-api/auth/sign-in`, {
-      method: 'POST',
-    });
-    return response.json();
-  },
+  return {
+    signIn: async (signInData: SignInData): Promise<SignInResponse> => {
+      const response = await fetch(`${apiBaseUrl}/auth/sign-in`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(signInData),
+      });
+      return response.json();
+    },
+
+    signUp: async (signUpData: SignUpData): Promise<SignUpResponse> => {
+      const response = await fetch(`${apiBaseUrl}/auth/sign-in`, {
+        method: 'POST',
+      });
+      return response.json();
+    },
+  }
+
 };
