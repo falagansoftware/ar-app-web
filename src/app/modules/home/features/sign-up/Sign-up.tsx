@@ -1,5 +1,5 @@
 import { AbsoluteCenter, Box, Button, Center, Heading, Input, Stack, useToast } from '@chakra-ui/react';
-import React, { FormEvent, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { SignUpProps } from './models/sign-up.props';

@@ -1,6 +1,6 @@
 import { Icon, Th, Thead, Tr } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronUpIcon, UpDownIcon } from '@chakra-ui/icons';
-import React from 'react';
+
 import { TableSystemColumn, TableSystemSort, TableSystemSortOrder } from '../Table-system.models';
 
 export function TableSystemHeader({

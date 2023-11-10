@@ -1,4 +1,4 @@
-import { AuthProvider } from '@auto-repair/front';
+import { AuthProvider } from "../../../../../shared/providers";
 
 export interface SignInProps {
   authProvider: AuthProvider;

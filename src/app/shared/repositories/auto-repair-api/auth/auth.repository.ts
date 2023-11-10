@@ -18,6 +18,7 @@ export const autoRepairApiAuthRepository = (): AuthProvider => {
     signUp: async (signUpData: SignUpData): Promise<SignUpResponse> => {
       const response = await fetch(`${apiBaseUrl}/auth/sign-in`, {
         method: 'POST',
+        body: JSON.stringify(signUpData),
       });
       return response.json();
     },

@@ -1,13 +1,14 @@
-import React from 'react';
+
 import { useUsers } from '../../hooks/use-users.hook';
 import { TableSystem } from '../../../../shared/components/table-system/Table-system';
 import { USERS_TABLE_CONFIG } from './list.config';
 import { Heading } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 export function ListUsers() {
-  const [activePage, setActivePage] = React.useState(1);
-  const [activeSort, setActiveSort] = React.useState(USERS_TABLE_CONFIG.defaultSort);
+  const [activePage, setActivePage] = useState(1);
+  const [activeSort, setActiveSort] = useState(USERS_TABLE_CONFIG.defaultSort);
   const { t } = useTranslation();
 
   const { data, isLoading, error } = useUsers({
@@ -39,3 +40,5 @@ export function ListUsers() {
     </>
   );
 }
+
+

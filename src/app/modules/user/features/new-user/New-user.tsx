@@ -1,6 +1,6 @@
 import './New-user.css';
 import { Box, ButtonGroup, Flex, Heading, IconButton, SimpleGrid, Spacer } from '@chakra-ui/react';
-import React from 'react';
+
 import { CheckIcon } from '@chakra-ui/icons';
 
 export function NewUser() {

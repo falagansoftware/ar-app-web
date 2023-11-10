@@ -1,5 +1,5 @@
 import { Box, List, ListItem } from '@chakra-ui/react';
-import React from 'react';
+
 import { TableRowsVerticalSkeleton } from '../skeletons/Table-rows-vertical-skeleton';
 
 export function TableSystemVerticalView({

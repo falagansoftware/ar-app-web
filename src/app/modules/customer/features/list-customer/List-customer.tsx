@@ -1,16 +1,17 @@
-import React from 'react';
+
 import { useCustomers } from '../../hooks/use-customers.hook';
 import { TableSystem } from '../../../../shared/components/table-system/Table-system';
 import { CUSTOMER_TABLE_CONFIG } from './list.config';
 import { Heading } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 
 export function ListCustomer() {
-  const [activePage, setActivePage] = React.useState(1);
-  const [activeSort, setActiveSort] = React.useState(CUSTOMER_TABLE_CONFIG.defaultSort);
+  const [activePage, setActivePage] = useState(1);
+  const [activeSort, setActiveSort] = useState(CUSTOMER_TABLE_CONFIG.defaultSort);
   const { t } = useTranslation();
 
-  const { data, isLoading, error } = useCustomers({
+  const { data, isLoading } = useCustomers({
     limit: CUSTOMER_TABLE_CONFIG.itemsPerPage,
     offset: (activePage - 1) * CUSTOMER_TABLE_CONFIG.itemsPerPage,
     sortBy: activeSort.sortBy,

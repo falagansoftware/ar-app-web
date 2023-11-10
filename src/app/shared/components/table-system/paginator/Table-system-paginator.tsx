@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { HStack, IconButton } from '@chakra-ui/react';
 import { ArrowLeftIcon, ArrowRightIcon, ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { TableSystemPaginatorPages } from './Table-system-pages';

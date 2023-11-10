@@ -18,7 +18,7 @@ window.fetch = async (...args) => {
             headers: { Authorization: `Bearer ${accessToken}` },
           }
         : { headers: { Authorization: `Bearer ${accessToken}` } };
-      const response = await originalFetch(resource, newConfig);
+      const response = await originalFetch(resource as Request, newConfig);
       if (!response.ok && response.status === 401) {
         const refreshToken = LocalStorageUtils.getItem(LocalStorageKeys.REFRESH_TOKEN);
         const newCredentials = await fetch('http://localhost:3001/auto-repair-api/auth/refresh', {
@@ -36,12 +36,12 @@ window.fetch = async (...args) => {
         LocalStorageUtils.setItem(LocalStorageKeys.ACCESS_TOKEN, res.accessToken);
         LocalStorageUtils.setItem(LocalStorageKeys.REFRESH_TOKEN, res.refreshToken);
         newConfig = { ...newConfig, headers: { Authorization: `Bearer ${res.accessToken}` } };
-        return await originalFetch(resource, newConfig);
+        return await originalFetch(resource as Request, newConfig);
       }
     } else {
       return Promise.reject({ error: 'error' });
     }
   }
 
-  return await originalFetch(resource, newConfig);
+  return await originalFetch(resource as Request, newConfig);
 };

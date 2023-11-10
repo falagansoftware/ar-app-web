@@ -1,6 +1,6 @@
 import { TableSystemConfig, TableSystemSort } from './Table-system.models';
 import { Table, TableContainer, useMediaQuery } from '@chakra-ui/react';
-import React from 'react';
+
 import { TableSystemHeader } from './header/Table-system-header';
 import { TableSystemBody } from './body/Table-system-body';
 import { TableSystemFooter } from './footer/Table-system-footer';

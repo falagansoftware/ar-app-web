@@ -1,5 +1,5 @@
 import { Box, CloseButton, SimpleGrid } from '@chakra-ui/react';
-import React, { createElement } from 'react';
+import { createElement } from 'react';
 import { SlotsSystemActions, SlotSystemConfig, SlotSystemContainerRendered } from './models/slots-system.models';
 import { useInitSlotsSystem } from './hooks/use-init-slots-system.hook';
 import { useSlot } from './context/slots-system-context';

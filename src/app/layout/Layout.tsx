@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Center, Heading, Link } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
 import SideMenu from './ui/side-menu/side-menu';

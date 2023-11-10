@@ -1,13 +1,12 @@
 import { TableSystemRowsSkeleton } from '../skeletons/Table-rows-skeleton';
 import { Tbody, Td, Tr } from '@chakra-ui/react';
-import React from 'react';
+
 import { TableSystemColumn } from '../Table-system.models';
 
 export function TableSystemBody({
   loading,
   columns,
   data,
-  rowDataKey,
   onRowClick,
 }: {
   loading: boolean;

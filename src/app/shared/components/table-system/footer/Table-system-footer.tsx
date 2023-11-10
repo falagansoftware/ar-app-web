@@ -1,7 +1,7 @@
 import { TableSystemPaginationSkeleton } from '../skeletons/Pagination-skeleton';
 import { Center, Td, Tfoot, Tr } from '@chakra-ui/react';
 import { TableSystemPaginator } from '../paginator/Table-system-paginator';
-import React from 'react';
+
 
 export function TableSystemFooter({
   columnsNumber,

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useTab } from './context/tabs-system-context';
