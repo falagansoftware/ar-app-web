@@ -13,8 +13,8 @@ export function SignIn({ authProvider }: SignInProps) {
   const [t] = useTranslation();
   const navigate = useNavigate();
 
-  const [password, setPassword] = useState();
-  const [email, setEmail] = useState();
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
 
   useEffect(() => {
     const isLogged = LocalStorageUtils.getItem(LocalStorageKeys.ACCESS_TOKEN);
