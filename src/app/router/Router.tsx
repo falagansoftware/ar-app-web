@@ -4,7 +4,6 @@ import { TabsSystemContainer } from '../shared/components/tabs-system/Tabs-syste
 import { TABS_CONFIG } from '../../config/tabs.config';
 import { PrivateRoute } from './guards/Private-route';
 import { SignIn } from '../modules/home/features/sign-in/Sign-in';
-import { autoRepairApiAuthRepository } from '../shared/repositories/auto-repair-api';
 
 const Layout = lazy(() => import('../layout/Layout').then(({ Layout }) => ({ default: Layout })));
 const SignUp = lazy(() =>

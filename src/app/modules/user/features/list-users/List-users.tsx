@@ -15,7 +15,7 @@ export function ListUsers() {
     limit: USERS_TABLE_CONFIG.itemsPerPage,
     offset: (activePage - 1) * USERS_TABLE_CONFIG.itemsPerPage,
     sortBy: activeSort.sortBy,
-    sortOrder: activeSort.sortOrder,
+    sortOrder: activeSort.sortOrder
   });
 
   if (error) {
