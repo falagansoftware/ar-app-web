@@ -2,9 +2,9 @@ import { AbsoluteCenter, Box, Button, Center, Heading, Input, Stack, useToast } 
 import { FormEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { SignUpProps } from './models/sign-up.props';
+import { autoRepairApiAuthRepository } from '../../../../shared/repositories/auto-repair-api';
 
-export function SignUp({ authProvider }: SignUpProps) {
+export function SignUp() {
   const toast = useToast();
   const [t] = useTranslation();
 
@@ -18,7 +18,7 @@ export function SignUp({ authProvider }: SignUpProps) {
     event.preventDefault();
     const passCoincidence = checkPasswordCoincidence(password, confirmPassword);
     if (passCoincidence) {
-      const signUpResponse = await authProvider.signUp({ email, name, surname, password });
+      const signUpResponse = await autoRepairApiAuthRepository().signUp({ email, name, surname, password });
       signUpResponse.error ? onSignUpError() : onSignUpSuccess();
     } else {
       onPassCoincidenceError();

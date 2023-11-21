@@ -6,7 +6,6 @@ import { PrivateRoute } from './guards/Private-route';
 import { SignIn } from '../modules/home/features/sign-in/Sign-in';
 import { autoRepairApiAuthRepository } from '../shared/repositories/auto-repair-api';
 
-const Home = lazy(() => import('../modules/home/Home').then(({ Home }) => ({ default: Home })));
 const Layout = lazy(() => import('../layout/Layout').then(({ Layout }) => ({ default: Layout })));
 const SignUp = lazy(() =>
   import('../modules/home/features/sign-up/Sign-up').then(({ SignUp }) => ({ default: SignUp })),
@@ -17,9 +16,8 @@ export function Router() {
     <BrowserRouter>
       <React.Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route index element={<SignIn authProvider={autoRepairApiAuthRepository()} />} />
-          <Route path="sign-up" element={<SignUp authProvider={autoRepairApiAuthRepository()} />} />
-          <Route path="sign-in" element={<Home />} />
+          <Route index element={<SignIn />} />
+          <Route path="sign-up" element={<SignUp />} />
           <Route path="private" element={<Layout />}>
             <Route
               path=""

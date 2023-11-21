@@ -5,7 +5,7 @@ import {
 
 export const USERS_TABLE_CONFIG: TableSystemConfig = {
   rowDataKey: 'uid',
-  itemsPerPage: 2,
+  itemsPerPage: 10,
   pagesToShow: 4,
   defaultSort: {
     sortBy: null,

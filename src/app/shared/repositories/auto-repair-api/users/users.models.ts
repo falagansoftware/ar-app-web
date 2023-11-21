@@ -4,3 +4,10 @@ export interface User {
   surname: string;
   email: string;
 }
+export interface FindUsersCriteria {
+  limit?: number;
+  offset?: number;
+  sortBy?: string | null;
+  sortOrder?: string | null;
+  filters: Partial<User>;
+}

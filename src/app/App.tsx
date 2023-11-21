@@ -5,7 +5,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from '../assets/theme/theme.config';
 import { Router } from './router/Router';
 import { queryClient } from '../config/react-query.config';
-import './shared/utils/http-auth.interceptor';
+import './shared/http/http-auth.interceptor';
 
 function App() {
     return (

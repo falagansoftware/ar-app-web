@@ -2,12 +2,11 @@ import { AbsoluteCenter, Box, Button, Center, Heading, Input, Stack, useToast } 
 import { FormEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { SignInProps } from './models/sign-in.props';
 import { LocalStorageUtils } from '../../../../shared/utils/local-storage.utils';
 import { LocalStorageKeys } from '../../../../../config/local-storage.config';
-import { SignInResponse } from '../../../../shared/providers';
+import { autoRepairApiAuthRepository } from '../../../../shared/repositories/auto-repair-api';
 
-export function SignIn({ authProvider }: SignInProps) {
+export function SignIn() {
   const [isLoading, setLoading] = useState(false);
   const toast = useToast();
   const [t] = useTranslation();
@@ -26,7 +25,7 @@ export function SignIn({ authProvider }: SignInProps) {
   async function onSubmitSignIn(event: FormEvent<HTMLFormElement>) {
     setLoading(true);
     event.preventDefault();
-    const signInResponse = await authProvider.signIn({ username: email, password });
+    const signInResponse = await autoRepairApiAuthRepository().signIn({ username: email, password });
     signInResponse.error ? onSignInError() : onSignInSuccess(signInResponse);
     setLoading(false);
   }
@@ -41,7 +40,7 @@ export function SignIn({ authProvider }: SignInProps) {
     });
   }
 
-  function onSignInSuccess(signInResponse: SignInResponse) {
+  function onSignInSuccess(signInResponse: any) {
     LocalStorageUtils.setItem(LocalStorageKeys.ACCESS_TOKEN, signInResponse.accessToken);
     LocalStorageUtils.setItem(LocalStorageKeys.REFRESH_TOKEN, signInResponse.refreshToken);
     toast({

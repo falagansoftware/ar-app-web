@@ -1,26 +1,16 @@
-import { AuthProvider, SignInData, SignInResponse, SignUpData, SignUpResponse } from "../../../providers";
+import { httpClient } from "../../../http/http.client";
+import { SignInData, SignInResponse, SignUpData, SignUpResponse } from "./auth.models";
 
-export const autoRepairApiAuthRepository = (): AuthProvider => {
+export const autoRepairApiAuthRepository = () => {
   const apiBaseUrl = import.meta.env.VITE_AR_API_BASE_URL;
 
   return {
     signIn: async (signInData: SignInData): Promise<SignInResponse> => {
-      const response = await fetch(`${apiBaseUrl}/auth/sign-in`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(signInData),
-      });
-      return response.json();
+        const response = await httpClient.post(`${apiBaseUrl}/auth/sign-in`, signInData);
+        return response.data;
     },
-
     signUp: async (signUpData: SignUpData): Promise<SignUpResponse> => {
-      const response = await fetch(`${apiBaseUrl}/auth/sign-in`, {
-        method: 'POST',
-        body: JSON.stringify(signUpData),
-      });
-      return response.json();
+      return await httpClient.post(`${apiBaseUrl}/auth/sign-up`, signUpData);
     },
   }
 
