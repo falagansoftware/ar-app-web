@@ -9,5 +9,5 @@ export interface FindUsersCriteria {
   offset?: number;
   sortBy?: string | null;
   sortOrder?: string | null;
-  filters: Partial<User>;
+  filters?: Partial<User>;
 }

@@ -3,5 +3,5 @@ export interface SearchCriteria<T> {
     offset?: number;
     sortBy?: string | null;
     sortOrder?: string | null;
-    filters: Partial<T>;
+    filters?: Partial<T>;
 }
