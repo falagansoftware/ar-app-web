@@ -43,6 +43,7 @@ export function SignUp() {
       duration: 9000,
       isClosable: true,
     });
+    navigate('/');
   }
 
   function onPassCoincidenceError() {

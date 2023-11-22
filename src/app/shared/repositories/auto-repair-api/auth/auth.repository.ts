@@ -6,8 +6,7 @@ export const autoRepairApiAuthRepository = () => {
 
   return {
     signIn: async (signInData: SignInData): Promise<SignInResponse> => {
-        const response = await httpClient.post(`${apiBaseUrl}/auth/sign-in`, signInData);
-        return response.data;
+        return await httpClient.post(`${apiBaseUrl}/auth/sign-in`, signInData);
     },
     signUp: async (signUpData: SignUpData): Promise<SignUpResponse> => {
       return await httpClient.post(`${apiBaseUrl}/auth/sign-up`, signUpData);
