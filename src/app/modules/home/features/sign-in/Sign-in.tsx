@@ -41,8 +41,8 @@ export function SignIn() {
   }
 
   function onSignInSuccess(signInResponse: any) {
-    LocalStorageUtils.setItem(LocalStorageKeys.ACCESS_TOKEN, signInResponse.accessToken);
-    LocalStorageUtils.setItem(LocalStorageKeys.REFRESH_TOKEN, signInResponse.refreshToken);
+    LocalStorageUtils.setItem(LocalStorageKeys.ACCESS_TOKEN, signInResponse.data.accessToken);
+    LocalStorageUtils.setItem(LocalStorageKeys.REFRESH_TOKEN, signInResponse.data.refreshToken);
     toast({
       title: t('sign-in.login'),
       description: t('sign-in.loginSuccess'),
