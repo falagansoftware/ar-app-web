@@ -1,7 +1,7 @@
 import { AbsoluteCenter, Box, Button, Center, Heading, Input, Stack, useToast } from '@chakra-ui/react';
 import { FormEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { autoRepairApiAuthRepository } from '../../../../shared/repositories/auto-repair-api';
 
 export function SignUp() {
@@ -13,6 +13,8 @@ export function SignUp() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
+
 
   async function onSubmitSignUp(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
