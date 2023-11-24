@@ -15,7 +15,6 @@ export function SignUp() {
   const [email, setEmail] = useState('');
   const navigate = useNavigate();
 
-
   async function onSubmitSignUp(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const passCoincidence = checkPasswordCoincidence(password, confirmPassword);

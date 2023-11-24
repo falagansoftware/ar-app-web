@@ -1,5 +1,5 @@
-import { httpClient } from "../../../http/http.client";
-import { FindUsersCriteria, User } from "./users.models";
+import { httpClient } from '../../../http/http.client';
+import { FindUsersCriteria, User } from './users.models';
 
 export const usersRepository = () => {
   const apiBaseUrl = import.meta.env.VITE_AR_API_BASE_URL;
@@ -13,8 +13,7 @@ export const usersRepository = () => {
       const result = await httpClient.get(
         `${apiBaseUrl}/users/find${limitQuery}${offsetQuery}${sortByQuery}${sortOrderQuery}${filtersQuery}`,
       );
-      return result.data
+      return result.data;
     },
   };
 };
-

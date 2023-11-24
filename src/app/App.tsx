@@ -8,7 +8,7 @@ import { queryClient } from '../config/react-query.config';
 import './shared/http/http-auth.interceptor';
 
 function App() {
-    return (
+  return (
     <ChakraProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <Router />

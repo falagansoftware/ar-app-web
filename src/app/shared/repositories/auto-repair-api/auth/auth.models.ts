@@ -33,4 +33,3 @@ export interface SignError {
 export interface SignInError extends SignError {}
 
 export interface SignUpError extends SignError {}
-

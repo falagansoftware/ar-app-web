@@ -1,4 +1,3 @@
-
 import { SlotsSystemContainer } from '../../shared/components/slots-system/Slots-system-container';
 import { DASHBOARD_SLOTS_CONFIG } from './config/dashboard-slots.config';
 import short from 'short-uuid';

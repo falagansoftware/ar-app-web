@@ -1,6 +1,5 @@
 import { Center, HStack, Skeleton, Td, Tfoot, Tr } from '@chakra-ui/react';
 
-
 export function TableSystemPaginationSkeleton({ columnsNumber }: { columnsNumber: number }) {
   return (
     <Tfoot>

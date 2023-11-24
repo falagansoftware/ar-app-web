@@ -17,11 +17,11 @@ const clearItem = (key: LocalStorageKeys) => {
 
 const clearAll = () => {
   window.localStorage.clear();
-}
+};
 
 export const LocalStorageUtils = {
   setItem,
   getItem,
   clearItem,
-  clearAll
+  clearAll,
 };

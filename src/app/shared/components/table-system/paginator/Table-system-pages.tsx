@@ -1,6 +1,5 @@
 import { Button, HStack } from '@chakra-ui/react';
 
-
 export function TableSystemPaginatorPages({
   pages,
   activePage,

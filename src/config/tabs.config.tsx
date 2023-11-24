@@ -8,6 +8,6 @@ export const TABS_CONFIG: TabsSystemConfig = {
       label: 'users.users',
       component: <User />,
       onInit: true,
-    }
+    },
   },
 };

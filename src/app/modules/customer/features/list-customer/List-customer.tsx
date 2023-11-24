@@ -1,4 +1,3 @@
-
 import { useCustomers } from '../../hooks/use-customers.hook';
 import { TableSystem } from '../../../../shared/components/table-system/Table-system';
 import { CUSTOMER_TABLE_CONFIG } from './list.config';
