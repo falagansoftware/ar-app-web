@@ -1,9 +1,9 @@
-name: PRODUCTION
+name: PRODUCTION_CHECK
 
 on:
   pull_request:
     branches: [ "main" ]
-    types: [opened, reopened]
+    types: [opened, reopened, edited]
 
   workflow_dispatch:
 
@@ -15,7 +15,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Add label to pull request
+    - name: Add label NO_CHECKED to pull request
       run: |
         # Extract pull request number
         PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
@@ -44,7 +44,7 @@ jobs:
     - name: Format
       run: npm run format
 
-    - name: Remove label from pull request
+    - name: Remove label NO_CHECKED to pull request
       run: |
         # Extract pull request number
         PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
