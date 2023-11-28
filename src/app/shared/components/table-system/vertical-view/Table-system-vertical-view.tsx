@@ -17,10 +17,10 @@ export function TableSystemVerticalView({
   return (
     <>
       {data.result.map((row: any) => (
-        <Box key={row.uid} borderWidth="1px" marginTop={3}>
-          <List spacing={3}>
+        <Box key={row.uid} marginTop={2} borderWidth={1} boxShadow='md' rounded={8}>
+          <List spacing={3} padding={2}>
             {columns.map((column: any) => {
-              return <ListItem key={column.data.key}>{row[column.data.key]}</ListItem>;
+              return <ListItem key={column.data.key}>{column.header}: {row[column.data.key]}</ListItem>;
             })}
           </List>
         </Box>
