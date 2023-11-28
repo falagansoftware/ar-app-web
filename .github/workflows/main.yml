@@ -1,37 +1,57 @@
-name: front-test-linter
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-# Controls when the workflow will run
+name: PRODUCTION
+
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-# Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+    types: [opened, reopened]
+
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  add-label:
     runs-on: ubuntu-latest
-# Steps represent a sequence of tasks that will be executed as part of the job
+
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - uses: actions/checkout@v2
-      - run: echo "🔎 Setting up node version"
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-      - run: echo "🔎 Installing dependencies"
-      - name: Install Dependencies
-        run: npm install
-      - run: echo "🔎 Checking linter"
-      - name: Linter
-        run: npm run lint
-      - run: echo "🔎 Checking format"
-      - name: Format
-        run: npm run format
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Add label to pull request
+      run: |
+        # Extract pull request number
+        PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+
+        # Add a label to the pull request using GitHub API
+        curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/labels \
+          -d '{"labels": ["NO_CHECKED"]}'
+
+    - run: echo "🔎 Setting up node version"
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - run: echo "🔎 Installing dependencies"
+    - name: Install Dependencies
+      run: npm install
+
+    - run: echo "🔎 Checking linter"
+    - name: Linter
+      run: npm run lint
+
+    - run: echo "🔎 Checking format"
+    - name: Format
+      run: npm run format
+
+    - name: Remove label from pull request
+      run: |
+        # Extract pull request number
+        PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+
+        # Remove a label from the pull request using GitHub API
+        curl -X DELETE \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/labels/NO_CHECKED
+
+
 
