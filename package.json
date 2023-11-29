@@ -13,7 +13,8 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "npx prettier src --check",
     "format:fix": "npm run format -- --write",
-    "test": "vitest --coverage --ui",
+    "test": "vitest --coverage --run",
+    "test:ui": "vitest --coverage --ui",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
