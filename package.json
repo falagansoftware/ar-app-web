@@ -13,7 +13,7 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "npx prettier src --check",
     "format:fix": "npm run format -- --write",
-    "test": "vitest --root src/tes  --coverage",
+    "test": "vitest --root src/test  --coverage  --ui",
     "lint-staged": "lint-staged",
     "prepare": "husky install"
   },
@@ -46,6 +46,7 @@
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "@vitest/coverage-istanbul": "^0.34.6",
+    "@vitest/ui": "^0.34.6",
     "eslint": "^8.45.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-react-hooks": "^4.6.0",
