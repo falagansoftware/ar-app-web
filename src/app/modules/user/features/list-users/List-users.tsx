@@ -1,14 +1,11 @@
 import { useUsers } from '../../hooks/use-users.hook';
 import { TableSystem } from '../../../../shared/components/table-system/Table-system';
 import { USERS_TABLE_CONFIG } from './list.config';
-import { Heading } from '@chakra-ui/react';
-import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 
 export function ListUsers() {
   const [activePage, setActivePage] = useState(1);
   const [activeSort, setActiveSort] = useState(USERS_TABLE_CONFIG.defaultSort);
-  const { t } = useTranslation();
 
   const { data, isLoading, error } = useUsers({
     limit: USERS_TABLE_CONFIG.itemsPerPage,
@@ -23,9 +20,9 @@ export function ListUsers() {
 
   return (
     <>
-      <Heading as="h4" size="md" marginBottom={5}>
+      {/* <Heading as="h4" size="md" marginBottom={5}>
         {t('users.users')}
-      </Heading>
+      </Heading> */}
       <TableSystem
         config={USERS_TABLE_CONFIG}
         data={data}

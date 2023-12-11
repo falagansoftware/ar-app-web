@@ -7,6 +7,7 @@ const globalStyles = {
         color: 'gray.600',
         lineHeight: 'tall',
         height: '100vh',
+        overflowY: 'hidden',
       },
       code: {
         'font-family': "source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace",
