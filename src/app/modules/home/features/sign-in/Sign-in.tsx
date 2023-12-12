@@ -1,10 +1,11 @@
-import { AbsoluteCenter, Box, Button, Center, Heading, Input, Stack, useToast } from '@chakra-ui/react';
+import { AbsoluteCenter, Box, Button, Center, Heading, Image, Input, Stack, useToast } from '@chakra-ui/react';
 import { FormEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
-import { LocalStorageUtils } from '../../../../shared/utils/local-storage.utils';
+import falaganLogo from '../../../../../assets/img/falagan_logo_white.webp';
 import { LocalStorageKeys } from '../../../../../config/local-storage.config';
 import { autoRepairApiAuthRepository } from '../../../../shared/repositories/auto-repair-api';
+import { LocalStorageUtils } from '../../../../shared/utils/local-storage.utils';
 
 export function SignIn() {
   const [isLoading, setLoading] = useState(false);
@@ -94,6 +95,11 @@ export function SignIn() {
           <Link to="sign-up">{t('sign-in.notAccount')}</Link>
         </Box>
       </AbsoluteCenter>
+      <Box position="fixed" bottom={0} width={'full'} alignContent={'center'}>
+        <Center>
+          <Image src={falaganLogo} boxSize={40} alt="falagan icon" />
+        </Center>
+      </Box>
     </Box>
   );
 }
