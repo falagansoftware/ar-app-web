@@ -2,7 +2,7 @@ name: PRODUCTION_CHECK
 
 on:
   pull_request:
-    branches: [ "main" ]
+    branches: [ "develop" , "*release*", "main" ]
     types: [opened, reopened, edited]
 
   workflow_dispatch:
