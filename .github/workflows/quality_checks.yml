@@ -49,6 +49,7 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         allowed-to-fail: true
+        coverage-filename: tests/reports/coverage-final.json
 
     - name: REMOVE LABEL QUALITY_CHECKS_FAIL TO PULL REQUEST
       run: |
