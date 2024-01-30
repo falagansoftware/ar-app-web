@@ -3,7 +3,7 @@ name: QUALITY_CHECKS
 on:
   pull_request:
     branches: [ "develop" , "*release*", "main" ]
-    types: [opened, reopened, edited]
+    types: [opened, reopened, edited, synchronize]
 
   workflow_dispatch:
 
