@@ -28,7 +28,7 @@ jobs:
           -d '{"labels": ["QUALITY_CHECKS_FAIL"]}'
 
     - name: SETTING UP NODE VERSION
-    - uses: actions/setup-node@v2
+      uses: actions/setup-node@v2
       with:
         node-version: '18'
 
