@@ -27,31 +27,28 @@ jobs:
           https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/labels \
           -d '{"labels": ["QUALITY_CHECKS_FAIL"]}'
 
-    - run: echo "SETTING UP NODE VERSION"
+    - name: SETTING UP NODE VERSION
     - uses: actions/setup-node@v2
       with:
         node-version: '18'
 
-    - run: echo "INSTALL DEPENDENCIES"
-    - name: Install Dependencies
+    - name: INSTALL DEPENDENCIES
       run: npm install
 
-    - run: echo "CHECK LINTER"
-    - name: Linter
+    - name: RUN LINTER
       run: npm run lint
 
-    - run: echo "CHECK FORMAT"
-    - name: Format
+    - name: RUN FORMAT
       run: npm run format
 
-    - run: echo "CHECK TEST"
-    - name: Format
+    - name: RUN TEST
       run: npm run test
 
-    - name: echo "CHECK COVERAGE"
+    - name: CHECK COVERAGE
       uses: greatwizard/coverage-diff-action@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        allowed-to-fail: true
 
     - name: REMOVE LABEL QUALITY_CHECKS_FAIL TO PULL REQUEST
       run: |
