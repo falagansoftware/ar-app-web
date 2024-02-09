@@ -48,7 +48,7 @@ jobs:
       uses: themichaelhall/check-code-coverage@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        report: coverage.xml
+        report: tests/reports/clover.xml
         required-percentage: 80
 
     - name: REMOVE LABEL QUALITY_CHECKS_FAIL TO PULL REQUEST
