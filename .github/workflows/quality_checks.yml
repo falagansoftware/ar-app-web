@@ -48,7 +48,7 @@ jobs:
       uses: greatwizard/coverage-diff-action@v1
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        allowed-to-fail: true
+        allowed-to-fail: false
         coverage-filename: tests/reports/coverage-final.json
 
     - name: REMOVE LABEL QUALITY_CHECKS_FAIL TO PULL REQUEST
