@@ -45,11 +45,11 @@ jobs:
       run: npm run test
 
     - name: CHECK COVERAGE
-      uses: greatwizard/coverage-diff-action@v1
+      uses: themichaelhall/check-code-coverage@v2
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        allowed-to-fail: false
-        coverage-filename: tests/reports/coverage-final.json
+        report: coverage.xml
+        required-percentage: 80
 
     - name: REMOVE LABEL QUALITY_CHECKS_FAIL TO PULL REQUEST
       run: |
