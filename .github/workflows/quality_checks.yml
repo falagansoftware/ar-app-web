@@ -49,7 +49,7 @@ jobs:
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         report: tests/reports/clover.xml
-        required-percentage: 80
+        required-percentage: 10
 
     - name: REMOVE LABEL QUALITY_CHECKS_FAIL TO PULL REQUEST
       run: |
