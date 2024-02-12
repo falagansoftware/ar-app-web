@@ -1,0 +1,79 @@
+name: QUALITY_CHECKS
+
+on:
+  pull_request:
+    branches: [ "develop" , "*release*", "main" ]
+    types: [opened, reopened, edited, synchronize]
+
+  workflow_dispatch:
+
+jobs:
+  check-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: CHECKOUT_CODE
+      uses: actions/checkout@v2
+
+    - name: ADD LABEL QUALITY_CHECKS_FAIL TO PULL REQUEST
+      run: |
+        # Extract pull request number
+        PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+
+        # Add a label to the pull request using GitHub API
+        curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/labels \
+          -d '{"labels": ["QUALITY_CHECKS_FAIL"]}'
+
+    - name: SETTING UP NODE VERSION
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+
+    - name: INSTALL DEPENDENCIES
+      run: npm install
+
+    - name: RUN LINTER
+      run: npm run lint
+
+    - name: RUN FORMAT
+      run: npm run format
+
+    - name: RUN TEST
+      run: npm run test
+
+    - name: CHECK COVERAGE
+      uses: themichaelhall/check-code-coverage@v2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        report: tests/reports/clover.xml
+        required-percentage: 10
+
+    - name: REMOVE LABEL QUALITY_CHECKS_FAIL TO PULL REQUEST
+      run: |
+        # Extract pull request number
+        PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+
+        # Remove a label from the pull request using GitHub API
+        curl -X DELETE \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/labels/QUALITY_CHECKS_FAIL
+
+    - name: ADD LABEL QUALITY_CHECKS_PASS TO PULL REQUEST
+      run: |
+        # Extract pull request number
+        PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+    
+        # Add a label to the pull request using GitHub API
+        curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/labels \
+          -d '{"labels": ["QUALITY_CHECKS_PASS"]}'
+
+  
+
+
